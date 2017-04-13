@@ -11,7 +11,7 @@ Create the table "firsts" as below.
 
 Copy `config.txt.dist` to `config.txt` and fill in the parameters.
 
-Run `getdata.sh`. This will download the Discovered zip and parse the XML files
+Run `getdata.sh`. This will download the Discoveries zip and parse the XML files
 in to the database. Schedule it in cron (every day would be the maximum).
 
 ## Requirements
