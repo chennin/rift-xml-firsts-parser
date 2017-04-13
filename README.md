@@ -20,6 +20,8 @@ in to the database. Schedule it in cron (every day would be the maximum).
 * asyncio
 * aiomysql
 * lxml
+* PCRE-enabled grep
+* nocache, nice, ionice
 
 ## SQL table
 
