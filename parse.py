@@ -101,6 +101,7 @@ async def parse(first, conn):
       firsts = elem.find(first['firsttag'])
       # Then parse that list
       for shards in list(firsts):
+        # Remove prefix, eg Live_EU_Brisesol => Brisesol
         shard = re.sub("Live_.._", "",shards.tag)
 
         guildelem = shards.find("Guild")
@@ -110,6 +111,7 @@ async def parse(first, conn):
 
         player = shards.find("Name").text
         date = shards.find("Date").text
+        # Remove "T" from the provided datestamps, e.g. 2014-02-19T23:08:32
         date = re.sub("T", " ", date)
 
         toadd.append( (iid, first['kind'], what, player, shard, guild, date) )
