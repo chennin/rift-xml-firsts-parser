@@ -1,7 +1,7 @@
 #!/bin/bash
 # Requires PCRE-enabled grep
 #set -x
-DIR="${HOME}"
+DIR="${HOME}/rift-xml-firsts-parser"
 cd ${DIR}
 OLD=$(ls ${DIR} | grep -oP "Rift_Discoveries.*zip")
 OLDDATE=$(echo ${OLD} | grep -oP "\d{4}-\d{1,2}-\d{1,2}")
@@ -23,7 +23,7 @@ until [ $EXIT == 0 ] || [ $TRIES -gt 31 ] || [ "${DATE}" == "${OLDDATE}" ]; do
 done
 if [ "${DATE}" != "${OLDDATE}" ]; then
         [ -e "${OLD}" ] && rm ${OLD}
-        nice ionice -c3 unzip -oq Rift_Discoveries_${DATE}.zip
+        nice ionice -c3 nocache unzip -oq Rift_Discoveries_${DATE}.zip
         chmod o-w *.xml
         nice ionice -c3 nocache ${DIR}/parse.py
 #        nice nocache ${DIR}/parseall.pl
