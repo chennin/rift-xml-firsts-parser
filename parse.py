@@ -127,7 +127,7 @@ async def parse(first, conn):
 
   # Execute any last parsed nodes
   if len(toadd) > 0:
-    cursor.executemany(sql, toadd)
+    await cursor.executemany(sql, toadd)
   # Commit once per file
   await conn.commit()
   # Clean up
