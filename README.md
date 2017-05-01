@@ -26,11 +26,14 @@ in to the database. Schedule it in cron (every day would be the maximum).
 ## SQL table
 
     CREATE TABLE `firsts` (
-     `Id` varchar(32) NOT NULL,
-     `Kind` varchar(20) NOT NULL,
-     `What` varchar(96) NOT NULL,
-     `Player` varchar(32) NOT NULL,
-     `Shard` varchar(32) NOT NULL,
-     `Guild` varchar(128) DEFAULT NULL,
+     `Id` varchar(32) COLLATE utf8mb4_bin NOT NULL,
+     `Kind` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+     `What` varchar(96) COLLATE utf8mb4_bin NOT NULL,
+     `Player` varchar(32) COLLATE utf8mb4_bin NOT NULL,
+     `Shard` varchar(32) COLLATE utf8mb4_bin NOT NULL,
+     `Guild` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL,
      `Stamp` datetime DEFAULT NULL,
-      PRIMARY KEY (`Id`,`What`,`Player`,`Shard`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+      PRIMARY KEY (`Id`,`What`,`Player`,`Shard`),
+      KEY `player` (`Player`),
+      KEY `guild` (`Guild`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
